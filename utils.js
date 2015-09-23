@@ -1,5 +1,5 @@
 /*!
- * composer-runtimes <https://github.com/doowb/composer-runtimes>
+ * composer-errors <https://github.com/doowb/composer-errors>
  *
  * Copyright (c) 2015, Brian Woodward.
  * Licensed under the MIT License.

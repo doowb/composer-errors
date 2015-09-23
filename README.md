@@ -35,7 +35,8 @@ errors({colors: false})(composer);
 
 ## Related projects
 
-[composer-runtimes](https://www.npmjs.com/package/composer-runtimes): Write composer task start and end times to a stream. | [homepage](https://github.com/doowb/composer-runtimes)
+* [composer](https://www.npmjs.com/package/composer): API-first task runner with three methods: task, run and watch. | [homepage](https://github.com/jonschlinkert/composer)
+* [composer-runtimes](https://www.npmjs.com/package/composer-runtimes): Write composer task start and end times to a stream. | [homepage](https://github.com/doowb/composer-runtimes)
 
 ## Running tests
 

@@ -20,6 +20,17 @@
     "test": "mocha"
   },
   "devDependencies": {
+    "async": "^1.4.2",
+    "composer": "^0.4.1",
     "mocha": "*"
+  },
+  "dependencies": {
+    "ansi-cyan": "^0.1.1",
+    "ansi-grey": "^0.1.1",
+    "ansi-red": "^0.1.1",
+    "error-symbol": "^0.1.0",
+    "extend-shallow": "^2.0.1",
+    "lazy-cache": "^0.2.3",
+    "time-stamp": "^0.1.0"
   }
 }

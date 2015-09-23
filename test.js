@@ -3,6 +3,7 @@
 var assert = require('assert');
 var async = require('async');
 var Composer = require('composer');
+var capture = require('capture-stream');
 var errors = require('./');
 
 var composer;
@@ -13,7 +14,7 @@ describe('composer-errors', function () {
   });
 
   it('should add listeners to composer', function (done) {
-    var restore = captureOutput(process.stderr);
+    var restore = capture(process.stderr);
     errors()(composer);
     composer.on('starting', function () {
       process.stderr.write('starting\n');
@@ -42,7 +43,7 @@ describe('composer-errors', function () {
   });
 
   it('should output messages without colors', function (done) {
-    var restore = captureOutput(process.stderr);
+    var restore = capture(process.stderr);
     errors({colors: false})(composer);
     composer.on('starting', function () {
       process.stderr.write('starting\n');
@@ -73,7 +74,7 @@ describe('composer-errors', function () {
   });
 
   it('should output messages to another stream', function (done) {
-    var restore = captureOutput(process.stdout);
+    var restore = capture(process.stdout);
     errors({stream: process.stdout})(composer);
     composer.on('starting', function () {
       process.stdout.write('starting\n');
@@ -102,7 +103,7 @@ describe('composer-errors', function () {
   });
 
   it('should listen for errors on tasks', function (done) {
-    var restore = captureOutput(process.stderr);
+    var restore = capture(process.stderr);
     errors({colors: false})(composer);
 
     // see composer-runtimes for starting/finished messages
@@ -133,7 +134,7 @@ describe('composer-errors', function () {
   });
 
   it('should show error when task is undefined', function () {
-    var restore = captureOutput(process.stderr);
+    var restore = capture(process.stderr);
     errors()(composer);
 
     // see composer-runtimes for starting/finished messages
@@ -167,15 +168,3 @@ describe('composer-errors', function () {
     async.series(tasks, done);
   });
 });
-
-function captureOutput (stream) {
-  var output = [];
-  var write = stream.write;
-  stream.write = function () {
-    output.push([].slice.call(arguments));
-  };
-  return function restore () {
-    stream.write = write;
-    return output;
-  };
-}

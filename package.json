@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "async": "^1.4.2",
+    "capture-stream": "^0.1.0",
     "composer": "^0.4.1",
     "mocha": "*"
   },
